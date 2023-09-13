@@ -9,3 +9,20 @@
 
 
 # ETT STEG I TAGET
+
+
+while True:
+    ordet = input("Skriv in ett ord som är 3-6 bokstäver långt: ")
+
+    if len(ordet) < 3:
+        print("ditt ord är för kort")
+    elif len(ordet) > 6:
+        print("ditt ord är för långt")
+    else:
+        for bokstav in ordet:
+            print(bokstav)
+        print("Nu är programmet klart!")
+        svar = input("Vill du skriva in ett nytt ord? För ja skriv j, för nej skriv n ")
+        
+        if svar == "n":
+            break
