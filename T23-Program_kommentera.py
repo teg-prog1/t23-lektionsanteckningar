@@ -1,3 +1,8 @@
+# OBS! om ni stöter på något ni inte känner igen får ni googla.
+# När det gäller varför det står {} i print är det ett sätt för att skriva ut variabler.
+# Googla gärna för att lära er mer om det.
+
+
 import math
 
 def vektor_längd_kalkylator():
