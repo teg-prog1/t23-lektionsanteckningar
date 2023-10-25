@@ -24,30 +24,33 @@ def main(): # det huvudsakliga programmet
     while True: # loop som kör programmet
         operation = ""
         while operation not in ["multiply","divide","quit"]:
-            operation = input("Choose an operation (multiply, divide, both, or quit to exit): ") # användaren får välja vad som ska göras
+            operation = input("Choose an operation (multiply, divide, or quit to exit): ").lower() # användaren får välja vad som ska göras
 
         if operation == "quit": # om quit så avslutas programmet
             print("Goodbye!")
             break
+        try:
+            num_questions = int(input("How many questions would you like to answer? ")) # får välja hur många frågor
+            score = 0
 
-        num_questions = int(input("How many questions would you like to answer? ")) # får välja hur många frågor
-        score = 0
+            for i in range(num_questions): # för antalet frågor
+                question, answer = generate_question(operation) # genererar fråga och svar med funktionen generate_question
+                user_answer = input(question) # frågar frågan som genererades 
+                
+                user_answer = int(user_answer)
 
-        for i in range(num_questions): # för antalet frågor
-            question, answer = generate_question(operation) # genererar fråga och svar med funktionen generate_question
-            user_answer = input(question) # frågar frågan som genererades 
-            
-            user_answer = int(user_answer)
+                if user_answer == answer: # om svaret är rätt
+                    print("Correct!")
+                    score += 1
+                else: # om inte rätt
+                    print(f"Wrong! The correct answer is {answer}.")
 
-            if user_answer == answer: # om svaret är rätt
-                print("Correct!")
-                score += 1
-            else: # om inte rätt
-                print(f"Wrong! The correct answer is {answer}.")
-
-        print("You got",  score, "out of", num_questions, "questions correct.") # skriver ut antal poäng
-        if num_questions > 0: # om minst en fråga
-            percentage = (score / num_questions) * 100
-            print(f"Your score: {percentage} %") # skriver ut hur många procent rätt
+            print("You got",  score, "out of", num_questions, "questions correct.") # skriver ut antal poäng
+            if num_questions > 0: # om minst en fråga
+                percentage = (score / num_questions) * 100
+                print(f"Your score: {percentage} %") # skriver ut hur många procent rätt
+        
+        except ValueError:
+            print("You have to choose an integer")
 
 main() # kör programmet
