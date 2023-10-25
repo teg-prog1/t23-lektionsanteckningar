@@ -14,7 +14,7 @@ def generate_question(operation): # genererar fråga och svar beroende på om mu
     if operation == "multiply": # om vi vill testa multiplikation
         question = "What is " + str(num1) + " * " + str(num2) + "? " # skapar en fråga
         answer = num1 * num2 # skapar ett facit till frågan
-    else: # om vi vill testa division
+    elif operation == "divide": # om vi vill testa division
         question = f"What is {num1*num2} / {num1}? " # skapar en fråga
         answer = num2 # facit till frågan
     return question, answer # ger tillbaka frågan och facit till frågan
@@ -22,7 +22,9 @@ def generate_question(operation): # genererar fråga och svar beroende på om mu
 def main(): # det huvudsakliga programmet
     print("Welcome to the Math Quiz!")
     while True: # loop som kör programmet
-        operation = input("Choose an operation (multiply, divide, both, or quit to exit): ") # användaren får välja vad som ska göras
+        operation = ""
+        while operation not in ["multiply","divide","quit"]:
+            operation = input("Choose an operation (multiply, divide, both, or quit to exit): ") # användaren får välja vad som ska göras
 
         if operation == "quit": # om quit så avslutas programmet
             print("Goodbye!")
